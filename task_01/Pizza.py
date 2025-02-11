@@ -159,9 +159,7 @@ class PizzaUser:
     def create_json(self):
         json_data = []
         data = {}
-        order_data = {}
-        order_data[self.user_ingred] = int(self.user_pizza_order())
-        data['User_Pizza'] = order_data
+        data[f'User_Pizza: {self.user_ingred}'] = self.user_pizza_order()
         json_data.append(data)
         if self.find_json() == 'Error':
             with open('Pizza_and_order.json', 'w', encoding='utf-8') as fp:
@@ -173,9 +171,7 @@ class PizzaUser:
 
     def add_json(self):
         data = {}
-        order_data = {}
-        order_data[self.user_ingred] = int(self.user_pizza_order())
-        data['User_Pizza'] = order_data
+        data[f'User_Pizza: {self.user_ingred}'] = self.user_pizza_order()
         self.json_data.append(data)
         with open('Pizza_and_order.json', 'w', encoding='utf-8') as fp:
             dump(self.json_data, fp, ensure_ascii=False, indent=2)

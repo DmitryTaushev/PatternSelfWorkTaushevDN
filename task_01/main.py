@@ -1,5 +1,5 @@
 from Pizza import PizzaMenu, PizzaOwn,PizzaUser
-
+import json
 
 pizza_menu = {
             "Гавайская": [100, 150, ["сырный соус", "ветчина", "филе цыпленка", "ананасы", "сыр моцарелла", "базилик"]],
@@ -43,5 +43,16 @@ if __name__ == "__main__":
             pizza_own.create_json()
             pizza_own.get_add_ingred()
 
+with open('Pizza_and_order.json','r',encoding = 'utf-8') as fp:
+    pizza_list = json.load(fp)
+print()
+print('Список проданных пицц')
+print(pizza_list)
+print(f'Количество проданных пицц - {len(pizza_list)}')
+order = 0
+for i in pizza_list:
+    for key in i:
+        order += int(i[key])
+print(f'Выручка - {order}')
 
 
